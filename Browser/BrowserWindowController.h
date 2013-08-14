@@ -14,6 +14,8 @@
 @property (assign) IBOutlet WebView *webView;
 @property (assign) IBOutlet NSTextField *urlBar;
 @property (assign) IBOutlet NSButton *backButton;
+@property (assign) IBOutlet NSButton *forwardButton;
+@property (assign) IBOutlet NSImageView *faviconImage;
 
 - (IBAction)go:(id)sender;
 

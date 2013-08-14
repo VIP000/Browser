@@ -16,6 +16,7 @@
 		55D9BEF417BBDDA700AD4701 /* BrowserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */; };
 		55D9BEF517BBDDA700AD4701 /* BrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */; };
 		55D9BEF717BBDFC100AD4701 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D9BEF617BBDFC100AD4701 /* WebKit.framework */; };
+		55E61A9317BBFF8C0010687E /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E61A9217BBFF8C0010687E /* NSString+URLEncode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserWindowController.m; sourceTree = "<group>"; };
 		55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserWindowController.xib; sourceTree = "<group>"; };
 		55D9BEF617BBDFC100AD4701 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		55E61A9117BBFF8C0010687E /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		55E61A9217BBFF8C0010687E /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 				55D9BEF117BBDDA700AD4701 /* BrowserWindowController.h */,
 				55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */,
 				55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */,
+				55E61A9417BBFFBC0010687E /* Library */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -112,6 +116,15 @@
 				55D9BED117BBDCFF00AD4701 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55E61A9417BBFFBC0010687E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				55E61A9117BBFF8C0010687E /* NSString+URLEncode.h */,
+				55E61A9217BBFF8C0010687E /* NSString+URLEncode.m */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +195,7 @@
 				55D9BECF17BBDCFF00AD4701 /* main.m in Sources */,
 				55D9BED617BBDCFF00AD4701 /* AppDelegate.m in Sources */,
 				55D9BEF417BBDDA700AD4701 /* BrowserWindowController.m in Sources */,
+				55E61A9317BBFF8C0010687E /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +331,7 @@
 				55D9BEDE17BBDCFF00AD4701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
