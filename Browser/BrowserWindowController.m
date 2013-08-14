@@ -13,7 +13,9 @@
 
 @end
 
-@implementation BrowserWindowController
+@implementation BrowserWindowController {
+    BOOL titleSet;
+}
 
 #pragma mark -
 #pragma mark Initialize
@@ -26,13 +28,13 @@
 {
     [super windowDidLoad];
     [self.urlBar becomeFirstResponder];
-    self.backButton.enabled = NO;
-    self.forwardButton.enabled = NO;
+    [self resetBackAndForwardButtonsForWebview:self.webView];
 }
 
 #pragma mark -
 #pragma mark IBAction
-- (IBAction)go:(id)sender {
+- (IBAction)go:(id)sender
+{
     NSString *urlString = self.urlBar.stringValue;
     if ([urlString isEqualToString:@""]) return;
     
@@ -51,28 +53,59 @@
     [self.webView.mainFrame loadRequest:request];
 }
 
+- (IBAction)backOrForwardButtonPressed:(NSSegmentedControl *)sender
+{
+    switch (sender.selectedSegment) {
+        case SEGMENT_BACK_BUTTON:
+            [self.webView goBack];
+            break;
+        case SEGMENT_FORWARD_BUTTON:
+            [self.webView goForward];
+            break;
+    }
+}
+
+- (IBAction)refreshButtonPressed:(id)sender
+{
+    [self.webView reload:nil];
+}
+
+#pragma mark -
+#pragma mark UI
+- (void)resetBackAndForwardButtonsForWebview:(WebView *)webView
+{
+    [self.backOrForwardButtonControl setEnabled:webView.canGoBack forSegment:SEGMENT_BACK_BUTTON];
+    [self.backOrForwardButtonControl setEnabled:webView.canGoForward forSegment:SEGMENT_FORWARD_BUTTON];
+}
+
 #pragma mark -
 #pragma mark WebView Delegates
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
+    NSLog(@"didStartProvisionalLoadForFrame");
     if (frame != sender.mainFrame)
         return;
     
+    titleSet = NO;
+    
     self.urlBar.stringValue = frame.provisionalDataSource.request.URL.absoluteString;
-    sender.window.title = nil;
+    sender.window.title = @"Loading...";
     self.faviconImage.image = nil;
 }
 
 - (void)webView:(WebView *)sender didReceiveTitle:(NSString *)title forFrame:(WebFrame *)frame
 {
+    NSLog(@"didReceiveTitle");
     if (frame != sender.mainFrame)
         return;
     
     sender.window.title = title;
+    titleSet = YES;
 }
 
 - (void)webView:(WebView *)sender didReceiveIcon:(NSImage *)image forFrame:(WebFrame *)frame
 {
+    NSLog(@"didReceiveIcon");
     if (frame != sender.mainFrame)
         return;
     
@@ -81,14 +114,14 @@
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
+    NSLog(@"didFinishLoadForFrame");
     if (frame != sender.mainFrame)
         return;
     
-    if (!sender.window.title)
-        sender.window.title = @"(no title)";
+    if (!titleSet)
+        sender.window.title = frame.provisionalDataSource.request.URL.absoluteString;
     
-    self.backButton.enabled = sender.canGoBack;
-    self.forwardButton.enabled = sender.canGoForward;
+    [self resetBackAndForwardButtonsForWebview:sender];
 }
 
 @end

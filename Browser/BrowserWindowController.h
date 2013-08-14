@@ -9,14 +9,20 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
+enum {
+    SEGMENT_BACK_BUTTON = 0,
+    SEGMENT_FORWARD_BUTTON
+};
+
 @interface BrowserWindowController : NSWindowController
 
 @property (assign) IBOutlet WebView *webView;
 @property (assign) IBOutlet NSTextField *urlBar;
-@property (assign) IBOutlet NSButton *backButton;
-@property (assign) IBOutlet NSButton *forwardButton;
 @property (assign) IBOutlet NSImageView *faviconImage;
+@property (assign) IBOutlet NSSegmentedControl *backOrForwardButtonControl;
 
 - (IBAction)go:(id)sender;
+- (IBAction)backOrForwardButtonPressed:(NSSegmentedControl *)sender;
+- (IBAction)refreshButtonPressed:(id)sender;
 
 @end
