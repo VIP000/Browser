@@ -18,8 +18,8 @@ enum {
 
 @property (assign) IBOutlet WebView *webView;
 @property (assign) IBOutlet NSTextField *urlBar;
-@property (assign) IBOutlet NSImageView *faviconImage;
 @property (assign) IBOutlet NSSegmentedControl *backOrForwardButtonControl;
+@property (assign) IBOutlet NSTableView *tableView;
 
 - (IBAction)go:(id)sender;
 - (IBAction)backOrForwardButtonPressed:(NSSegmentedControl *)sender;

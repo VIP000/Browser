@@ -370,7 +370,7 @@
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="382754469">
-								<int key="NSCellFlags">-1808793535</int>
+								<int key="NSCellFlags">-1804599231</int>
 								<int key="NSCellFlags2">272663552</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="543210892"/>
@@ -466,6 +466,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="265059369"/>
+					</object>
+					<int key="connectionID">161</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
@@ -490,6 +498,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="265059369"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">160</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">textField</string>
 						<object class="NSTableCellView" key="source" id="627957598">
 							<nil key="NSNextResponder"/>
@@ -502,6 +518,7 @@
 									<reference key="NSSuperview" ref="627957598"/>
 									<reference key="NSNextKeyView" ref="624199737"/>
 									<string key="NSAntiCompressionPriority">{250, 750}</string>
+									<int key="NSTag">1</int>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="140011324">
 										<int key="NSCellFlags">67108864</int>
@@ -526,6 +543,7 @@
 									<reference key="NSSuperview" ref="627957598"/>
 									<reference key="NSNextKeyView" ref="107689871"/>
 									<string key="NSAntiCompressionPriority">{250, 750}</string>
+									<int key="NSTag">2</int>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="403317030">
 										<int key="NSCellFlags">67108928</int>
@@ -552,7 +570,7 @@
 								</object>
 								<object class="NSImageView" id="624199737">
 									<reference key="NSNextResponder" ref="627957598"/>
-									<int key="NSvFlags">268</int>
+									<int key="NSvFlags">265</int>
 									<set class="NSMutableSet" key="NSDragTypes">
 										<string>Apple PDF pasteboard type</string>
 										<string>Apple PICT pasteboard type</string>
@@ -565,6 +583,7 @@
 									<reference key="NSSuperview" ref="627957598"/>
 									<reference key="NSNextKeyView" ref="568267625"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
+									<int key="NSTag">3</int>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSImageCell" key="NSCell" id="770636772">
 										<int key="NSCellFlags">134217728</int>
@@ -585,6 +604,30 @@
 						<reference key="destination" ref="325193062"/>
 					</object>
 					<int key="connectionID">149</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">title</string>
+						<reference key="source" ref="627957598"/>
+						<reference key="destination" ref="325193062"/>
+					</object>
+					<int key="connectionID">162</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">url</string>
+						<reference key="source" ref="627957598"/>
+						<reference key="destination" ref="568267625"/>
+					</object>
+					<int key="connectionID">163</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">favicon</string>
+						<reference key="source" ref="627957598"/>
+						<reference key="destination" ref="624199737"/>
+					</object>
+					<int key="connectionID">164</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -747,9 +790,9 @@
 						<int key="objectID">146</int>
 						<reference key="object" ref="627957598"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="624199737"/>
 							<reference ref="325193062"/>
 							<reference ref="568267625"/>
+							<reference ref="624199737"/>
 						</array>
 						<reference key="parent" ref="346934158"/>
 					</object>
@@ -823,6 +866,7 @@
 					<reference ref="627957598"/>
 				</array>
 				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="146.CustomClassName">TabCellView</string>
 				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="148.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -837,7 +881,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">158</int>
+			<int key="maxID">164</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -865,7 +909,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="backOrForwardButtonControl">NSSegmentedControl</string>
-						<string key="faviconImage">NSImageView</string>
+						<string key="tableView">NSTableView</string>
 						<string key="urlBar">NSTextField</string>
 						<string key="webView">WebView</string>
 					</dictionary>
@@ -874,9 +918,9 @@
 							<string key="name">backOrForwardButtonControl</string>
 							<string key="candidateClassName">NSSegmentedControl</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="faviconImage">
-							<string key="name">faviconImage</string>
-							<string key="candidateClassName">NSImageView</string>
+						<object class="IBToOneOutletInfo" key="tableView">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="urlBar">
 							<string key="name">urlBar</string>
@@ -890,6 +934,33 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/BrowserWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TabCellView</string>
+					<string key="superclassName">NSTableCellView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="favicon">NSImageView</string>
+						<string key="title">NSTextField</string>
+						<string key="url">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="favicon">
+							<string key="name">favicon</string>
+							<string key="candidateClassName">NSImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="title">
+							<string key="name">title</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="url">
+							<string key="name">url</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TabCellView.h</string>
 					</object>
 				</object>
 			</array>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE517BDA4BA00D99A28 /* BrowserTab.m */; };
+		554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE817BDA83900D99A28 /* TabCellView.m */; };
 		55D9BEC317BBDCFF00AD4701 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */; };
 		55D9BECD17BBDCFF00AD4701 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55D9BECB17BBDCFF00AD4701 /* InfoPlist.strings */; };
 		55D9BECF17BBDCFF00AD4701 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D9BECE17BBDCFF00AD4701 /* main.m */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		554EAEE417BDA4BA00D99A28 /* BrowserTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserTab.h; sourceTree = "<group>"; };
+		554EAEE517BDA4BA00D99A28 /* BrowserTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserTab.m; sourceTree = "<group>"; };
+		554EAEE717BDA83900D99A28 /* TabCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabCellView.h; sourceTree = "<group>"; };
+		554EAEE817BDA83900D99A28 /* TabCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabCellView.m; sourceTree = "<group>"; };
 		55D9BEBF17BBDCFF00AD4701 /* Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Browser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		55D9BEC517BBDCFF00AD4701 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +107,10 @@
 				55D9BEF117BBDDA700AD4701 /* BrowserWindowController.h */,
 				55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */,
 				55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */,
+				554EAEE417BDA4BA00D99A28 /* BrowserTab.h */,
+				554EAEE517BDA4BA00D99A28 /* BrowserTab.m */,
+				554EAEE717BDA83900D99A28 /* TabCellView.h */,
+				554EAEE817BDA83900D99A28 /* TabCellView.m */,
 				55E61A9417BBFFBC0010687E /* Library */,
 			);
 			path = Browser;
@@ -196,6 +206,8 @@
 				55D9BED617BBDCFF00AD4701 /* AppDelegate.m in Sources */,
 				55D9BEF417BBDDA700AD4701 /* BrowserWindowController.m in Sources */,
 				55E61A9317BBFF8C0010687E /* NSString+URLEncode.m in Sources */,
+				554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */,
+				554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
