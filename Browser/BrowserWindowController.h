@@ -16,6 +16,7 @@ enum {
 
 @interface BrowserWindowController : NSWindowController
 
+@property (assign) IBOutlet NSView *webViewContainer;
 @property (assign) IBOutlet WebView *webView;
 @property (assign) IBOutlet NSTextField *urlBar;
 @property (assign) IBOutlet NSSegmentedControl *backOrForwardButtonControl;

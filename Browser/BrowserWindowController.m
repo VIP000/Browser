@@ -20,8 +20,7 @@
     NSMutableArray *tabs;
 }
 
-#pragma mark -
-#pragma mark Initialize
+#pragma mark - Initialize
 - (id)init
 {
     self = [super initWithWindowNibName:@"BrowserWindowController"];
@@ -46,8 +45,7 @@
     [self resetBackAndForwardButtonsForWebview:self.webView];
 }
 
-#pragma mark -
-#pragma mark IBAction
+#pragma mark - IBAction
 - (IBAction)go:(id)sender
 {
     NSString *urlString = self.urlBar.stringValue;
@@ -85,16 +83,14 @@
     [self.webView reload:nil];
 }
 
-#pragma mark -
-#pragma mark UI
+#pragma mark - UI
 - (void)resetBackAndForwardButtonsForWebview:(WebView *)webView
 {
     [self.backOrForwardButtonControl setEnabled:webView.canGoBack forSegment:SEGMENT_BACK_BUTTON];
     [self.backOrForwardButtonControl setEnabled:webView.canGoForward forSegment:SEGMENT_FORWARD_BUTTON];
 }
 
-#pragma mark -
-#pragma mark WebView Delegates
+#pragma mark - WebView Delegates
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
     //NSLog(@"didStartProvisionalLoadForFrame");
@@ -139,21 +135,23 @@
     [self resetBackAndForwardButtonsForWebview:sender];
 }
 
-#pragma mark -
-#pragma mark Table View Data Source
+#pragma mark - Table View Data Source
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
+    NSLog(@"tabs.count = %ld", tabs.count);
     return tabs.count;
 }
 
-- (id)tableView:(NSTableView *)aTableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+- (id)tableView:(NSTableView *)aTableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
     NSLog(@"viewForTableColumn");
-    TabCellView *result = [aTableView makeViewWithIdentifier:@"MyView" owner:self];
+    static NSString *cellIdentifier = @"MyCell";
+    
+    TabCellView *result = [aTableView makeViewWithIdentifier:cellIdentifier owner:self];
     
     if (!result) {
         result = [[TabCellView alloc] init];
-        result.identifier = @"MyView";
+        result.identifier = cellIdentifier;
     }
     
     result.title.stringValue = @"test";
@@ -167,7 +165,15 @@
 {
     // ensure index is set
     NSInteger index = self.tableView.selectedRow;
+    NSLog(@"index = %ld", index);
     
+    if (index < 0) return;
+    
+    WebView *tabWebView = [tabs[index] webView];
+    tabWebView.frame = self.webViewContainer.frame;
+    
+    self.webViewContainer.subviews = @[];
+    [self.webViewContainer addSubview:tabWebView];
     /*
     // add the settings view first
     [self.settingsView setSubviews:@[]];

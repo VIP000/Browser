@@ -12,7 +12,7 @@
 
 + (id)newBrowserTabWithURL:(NSURL *)URL
 {
-    return [[self.class alloc] initWithURL:URL];
+    return [[self alloc] initWithURL:URL];
 }
 
 - (id)initWithURL:(NSURL *)URL
