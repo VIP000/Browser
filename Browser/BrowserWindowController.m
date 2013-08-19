@@ -18,6 +18,7 @@
 @implementation BrowserWindowController {
     BOOL titleSet;
     NSMutableArray *tabs;
+    NSInteger selectedIndex;
 }
 
 #pragma mark - Initialize
@@ -43,6 +44,7 @@
     [super windowDidLoad];
     [self.urlBar becomeFirstResponder];
     [self resetBackAndForwardButtonsForWebview:self.webView];
+    selectedIndex = -1;
 }
 
 #pragma mark - IBAction
@@ -132,6 +134,7 @@
     if (!titleSet)
         sender.window.title = frame.provisionalDataSource.request.URL.absoluteString;
     
+    [self.tableView reloadData];
     [self resetBackAndForwardButtonsForWebview:sender];
 }
 
@@ -154,9 +157,9 @@
         result.identifier = cellIdentifier;
     }
     
-    result.title.stringValue = @"test";
-    result.url.stringValue = @"test";
-    result.favicon.image = nil;
+    result.title.stringValue = [tabs[row] webView].mainFrameTitle;
+    result.url.stringValue = [tabs[row] webView].mainFrameURL;
+    result.favicon.image = [tabs[row] webView].mainFrameIcon;
     
     return result;
 }
@@ -169,36 +172,12 @@
     
     if (index < 0) return;
     
+    selectedIndex = index;
+    
     WebView *tabWebView = [tabs[index] webView];
     tabWebView.frame = self.webViewContainer.frame;
     
-    self.webViewContainer.subviews = @[];
-    [self.webViewContainer addSubview:tabWebView];
-    /*
-    // add the settings view first
-    [self.settingsView setSubviews:@[]];
-    [self.views[index] settingsViewController].view.frame = self.settingsView.bounds;
-    [self.settingsView addSubview:[[self.views[index] settingsViewController] view]];
-    
-    // change the menuitem image
-    if ([self.views[index] respondsToSelector:@selector(menuImage)] && [self.views[index] menuImage]) {
-        self.statusItem.image = [self.views[index] menuImage];
-        self.statusItem.title = nil;
-    } else {
-        self.statusItem.image = nil;
-        self.statusItem.title = @"SG";
-    }
-    
-    // change the menuitem mode name
-    self.modeNameMenuItem.title = [self.views[index] identifier];
-    
-    // then add the overlay
-    [self.overlayWindow.contentView setSubviews:@[]];
-    [self.overlayWindow.contentView addSubview:self.views[index]];
-    [self.views[index] setNeedsDisplay:YES];
-     */
-    
+    self.webViewContainer.subviews = @[tabWebView];
 }
-
 
 @end

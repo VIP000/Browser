@@ -21,6 +21,7 @@ enum {
 @property (assign) IBOutlet NSTextField *urlBar;
 @property (assign) IBOutlet NSSegmentedControl *backOrForwardButtonControl;
 @property (assign) IBOutlet NSTableView *tableView;
+@property (assign) IBOutlet NSTableColumn *tableColumn;
 
 - (IBAction)go:(id)sender;
 - (IBAction)backOrForwardButtonPressed:(NSSegmentedControl *)sender;

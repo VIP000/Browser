@@ -22,6 +22,7 @@
         self.webView = [[WebView alloc] init];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         [self.webView.mainFrame loadRequest:request];
+        self.webView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
     }
     return self;
 }
