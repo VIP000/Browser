@@ -100,10 +100,10 @@
 		55D9BEC817BBDCFF00AD4701 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				55D9BEC917BBDCFF00AD4701 /* Supporting Files */,
 				55D9BED417BBDCFF00AD4701 /* AppDelegate.h */,
 				55D9BED517BBDCFF00AD4701 /* AppDelegate.m */,
 				55D9BED717BBDCFF00AD4701 /* MainMenu.xib */,
-				55D9BEC917BBDCFF00AD4701 /* Supporting Files */,
 				55D9BEF117BBDDA700AD4701 /* BrowserWindowController.h */,
 				55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */,
 				55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */,
