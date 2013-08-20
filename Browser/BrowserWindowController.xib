@@ -158,9 +158,9 @@
 															</array>
 															<double key="NSIntercellSpacingWidth">3</double>
 															<double key="NSIntercellSpacingHeight">2</double>
-															<object class="NSColor" key="NSBackgroundColor" id="383518087">
-																<int key="NSColorSpace">3</int>
-																<bytes key="NSWhite">MQA</bytes>
+															<object class="NSColor" key="NSBackgroundColor">
+																<int key="NSColorSpace">1</int>
+																<bytes key="NSRGB">MC43Nzc2NTI2MjQ0IDAuODAxMTE4NzAzMiAwLjgzMTE2NzE5NDcAA</bytes>
 															</object>
 															<object class="NSColor" key="NSGridColor">
 																<int key="NSColorSpace">6</int>
@@ -172,14 +172,16 @@
 																</object>
 															</object>
 															<double key="NSRowHeight">66</double>
-															<int key="NSTvFlags">-700448768</int>
+															<int key="NSTvFlags">-432013312</int>
 															<reference key="NSDelegate"/>
 															<reference key="NSDataSource"/>
+															<int key="NSGridStyleMask">2</int>
 															<int key="NSColumnAutoresizingStyle">4</int>
 															<int key="NSDraggingSourceMaskForLocal">15</int>
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
-															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewSelectionHighlightStyle">1</int>
+															<int key="NSTableViewDraggingDestinationStyle">1</int>
 															<int key="NSTableViewGroupRowStyle">1</int>
 														</object>
 													</array>
@@ -382,7 +384,10 @@
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
 									<string key="NSColorName">textBackgroundColor</string>
-									<reference key="NSColor" ref="383518087"/>
+									<object class="NSColor" key="NSColor">
+										<int key="NSColorSpace">3</int>
+										<bytes key="NSWhite">MQA</bytes>
+									</object>
 								</object>
 								<object class="NSColor" key="NSTextColor">
 									<int key="NSColorSpace">6</int>
@@ -898,7 +903,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">167</int>
+			<int key="maxID">168</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -929,7 +934,6 @@
 						<string key="tableColumn">NSTableColumn</string>
 						<string key="tableView">NSTableView</string>
 						<string key="urlBar">NSTextField</string>
-						<string key="webView">WebView</string>
 						<string key="webViewContainer">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -948,10 +952,6 @@
 						<object class="IBToOneOutletInfo" key="urlBar">
 							<string key="name">urlBar</string>
 							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="webView">
-							<string key="name">webView</string>
-							<string key="candidateClassName">WebView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="webViewContainer">
 							<string key="name">webViewContainer</string>
