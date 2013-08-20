@@ -26,19 +26,12 @@
 {
     self = [super initWithWindowNibName:@"BrowserWindowController"];
     if (self) {
-        selectedIndex = 0;
+        selectedIndex = -1;
         
         tabs = [NSMutableArray new];
         
-        BrowserTab *initialTab = [BrowserTab newBrowserTabWithURL:[NSURL URLWithString:@"http://www.daveeddy.com"]];
-        initialTab.webView.frameLoadDelegate = self;
-        initialTab.webView.resourceLoadDelegate = self;
-        [tabs addObject:initialTab];
-        
-        initialTab = [BrowserTab newBrowserTabWithURL:[NSURL URLWithString:@"http://www.lightsandshapes.com"]];
-        initialTab.webView.frameLoadDelegate = self;
-        initialTab.webView.resourceLoadDelegate = self;
-        [tabs addObject:initialTab];
+        [self addBrowserTab:@"http://www.daveeddy.com"];
+        [self addBrowserTab:@"http://lightsandshapes.com"];
         
         [self.tableView reloadData];
     }
@@ -49,7 +42,11 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    
+    // XXX Gross
+    [self tableViewSelectionDidChange:nil];
+    // END XXX
+    
     [self.urlBar becomeFirstResponder];
 }
 
@@ -98,10 +95,21 @@
     [self.backOrForwardButtonControl setEnabled:webView.canGoForward forSegment:SEGMENT_FORWARD_BUTTON];
 }
 
-#pragma mark - Helpers
+#pragma mark - Tab Helpers
 - (WebView *)currentWebView
 {
     return selectedIndex < 0 ? nil : [tabs[selectedIndex] webView];
+}
+
+- (NSInteger)addBrowserTab:(NSString *)URLString
+{
+    NSInteger index = tabs.count;
+    BrowserTab *tab = [BrowserTab newBrowserTabWithURL:[NSURL URLWithString:URLString]];
+    tab.webView.frameLoadDelegate = self;
+    tab.webView.resourceLoadDelegate = self;
+    tab.webView.identifier = [NSString stringWithFormat:@"%ld", index];
+    [tabs addObject:tab];
+    return index;
 }
 
 #pragma mark - WebView Delegates
@@ -130,7 +138,10 @@
     if (frame != sender.mainFrame)
         return;
     
-    [self.tableView reloadData];
+    NSInteger index = [sender.identifier integerValue];
+    
+    //[self.tableView reloadData];
+    [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
@@ -141,7 +152,9 @@
     if (!titleSet)
         sender.window.title = frame.provisionalDataSource.request.URL.absoluteString;
     
-    [self.tableView reloadData];
+    NSInteger index = [sender.identifier integerValue];
+    
+    [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
     [self resetBackAndForwardButtonsForWebview:sender];
 }
 
@@ -149,6 +162,10 @@
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
     return tabs.count;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex {
+    return YES;
 }
 
 - (id)tableView:(NSTableView *)aTableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -174,22 +191,26 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
-    // ensure index is set
     NSInteger index = self.tableView.selectedRow;
+    NSLog(@"index = %ld", index);
     
-    if (index < 0) return;
+    if (index < 0 || selectedIndex == index)
+        return;
     
     selectedIndex = index;
     
     WebView *tabWebView = [tabs[index] webView];
-    tabWebView.frame = self.webViewContainer.bounds;
     
+    NSLog(@"selectedIndex changed to %ld", selectedIndex);
+    
+    // load the webview into view
+    tabWebView.frame = self.webViewContainer.bounds;
     self.webViewContainer.subviews = @[tabWebView];
     
     self.window.title = tabWebView.mainFrameTitle;
     self.urlBar.stringValue = tabWebView.mainFrameURL;
     
-    [self resetBackAndForwardButtonsForWebview:self.currentWebView];
+    [self resetBackAndForwardButtonsForWebview:tabWebView];
 }
 
 @end
