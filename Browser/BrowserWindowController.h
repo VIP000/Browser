@@ -13,6 +13,10 @@ enum {
     SEGMENT_BACK_BUTTON = 0,
     SEGMENT_FORWARD_BUTTON
 };
+enum {
+    SEGMENT_DELETE_TAB_BUTTON = 0,
+    SEGMENT_ADD_TAB_BUTTON
+};
 
 #define SPLIT_VIEW_INITIAL_POSITION 200
 #define SPLIT_VIEW_FAVICON_POSITION 41
@@ -29,6 +33,7 @@ enum {
 
 - (IBAction)go:(id)sender;
 - (IBAction)backOrForwardButtonPressed:(NSSegmentedControl *)sender;
+- (IBAction)addOrDeleteTabButtonPressed:(NSSegmentedControl *)sender;
 - (IBAction)refreshButtonPressed:(id)sender;
 - (IBAction)menuButtonPressed:(id)sender;
 

@@ -86,6 +86,19 @@
     }
 }
 
+- (IBAction)addOrDeleteTabButtonPressed:(NSSegmentedControl *)sender
+{
+    switch (sender.selectedSegment) {
+        case SEGMENT_DELETE_TAB_BUTTON:
+            [tabs removeObjectAtIndex:selectedIndex];
+            break;
+        case SEGMENT_ADD_TAB_BUTTON:
+            [self addBrowserTab:@"http://duckduckgo.com"];
+            break;
+    }
+    [self.tableView reloadData];
+}
+
 - (IBAction)refreshButtonPressed:(id)sender
 {
     [self.currentWebView reload:nil];
