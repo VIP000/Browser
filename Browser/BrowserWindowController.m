@@ -49,8 +49,8 @@
     [self tableViewSelectionDidChange:nil];
     // END XXX
     
-    [self.splitView setPosition:INITIAL_SPLIT_VIEW_POSITION ofDividerAtIndex:0 animated:NO];
     [self.urlBar becomeFirstResponder];
+    [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:NO];
 }
 
 #pragma mark - IBAction
@@ -61,9 +61,9 @@
     
     NSLog(@"go called with %@", urlString);
     
-    if ([urlString rangeOfString:@"http"].location == 0 || [urlString rangeOfString:@"."].location != NSNotFound) {
+    if ([urlString hasPrefix:@"http"] || [urlString rangeOfString:@"."].location != NSNotFound) {
         // period found, is URL
-        if ([urlString rangeOfString:@"http"].location != 0)
+        if (![urlString hasPrefix:@"http"])
             urlString = [NSString stringWithFormat:@"http://%@", urlString];
     } else {
         urlString = [NSString stringWithFormat:@"https://duckduckgo.com/?q=%@", [urlString urlEncodedString]];
@@ -93,10 +93,16 @@
 
 - (IBAction)menuButtonPressed:(id)sender
 {
-    if ([self.splitView positionOfDividerAtIndex:0] > 0)
+    CGFloat position = [self.splitView positionOfDividerAtIndex:0];
+    NSLog(@"%lf", position);
+    if (position > SPLIT_VIEW_INITIAL_POSITION)
+        [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:YES];
+    else if (position > SPLIT_VIEW_FAVICON_POSITION)
+        [self.splitView setPosition:SPLIT_VIEW_FAVICON_POSITION ofDividerAtIndex:0 animated:YES];
+    else if (position > 0)
         [self.splitView setPosition:0 ofDividerAtIndex:0 animated:YES];
     else
-        [self.splitView setPosition:INITIAL_SPLIT_VIEW_POSITION ofDividerAtIndex:0 animated:YES];
+        [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:YES];
 }
 
 #pragma mark - UI
@@ -129,6 +135,13 @@
     if (frame != sender.mainFrame)
         return;
     
+    NSInteger index = [sender.identifier integerValue];
+    [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+    
+    if (index != selectedIndex)
+        return;
+    
+    // NOT SAFE
     titleSet = NO;
     
     self.urlBar.stringValue = frame.provisionalDataSource.request.URL.absoluteString;
@@ -140,8 +153,16 @@
     if (frame != sender.mainFrame)
         return;
     
-    sender.window.title = title;
-    titleSet = YES;
+    NSInteger index = [sender.identifier integerValue];
+    [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+    
+    if (index != selectedIndex)
+        return;
+    
+    if (title) {
+        titleSet = YES;
+        sender.window.title = title;
+    }
 }
 
 - (void)webView:(WebView *)sender didReceiveIcon:(NSImage *)image forFrame:(WebFrame *)frame
@@ -151,7 +172,6 @@
     
     NSInteger index = [sender.identifier integerValue];
     
-    //[self.tableView reloadData];
     [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
 }
 
@@ -160,12 +180,16 @@
     if (frame != sender.mainFrame)
         return;
     
+    // NOT SAFE
     if (!titleSet)
         sender.window.title = frame.provisionalDataSource.request.URL.absoluteString;
     
     NSInteger index = [sender.identifier integerValue];
-    
     [self.tableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:index] columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+    
+    if (index != selectedIndex)
+        return;
+    
     [self resetBackAndForwardButtonsForWebview:sender];
 }
 
@@ -190,9 +214,15 @@
         result.identifier = cellIdentifier;
     }
     
-    result.title.stringValue = [tabs[row] webView].mainFrameTitle;
-    result.url.stringValue = [tabs[row] webView].mainFrameURL;
-    result.favicon.image = [tabs[row] webView].mainFrameIcon;
+    WebView *tabWebView = [tabs[row] webView];
+    
+    result.title.stringValue = tabWebView.mainFrameTitle;
+    result.url.stringValue = tabWebView.mainFrameURL;
+    result.favicon.image = tabWebView.mainFrameIcon;
+    if (tabWebView.isLoading)
+        [result.progressIndicator startAnimation:nil];
+    else
+        [result.progressIndicator stopAnimation:nil];
     
     if ([result.title.stringValue isEqualToString:@""])
         result.title.stringValue = result.url.stringValue.lastPathComponent;

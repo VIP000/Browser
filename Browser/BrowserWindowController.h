@@ -14,7 +14,8 @@ enum {
     SEGMENT_FORWARD_BUTTON
 };
 
-#define INITIAL_SPLIT_VIEW_POSITION 250
+#define SPLIT_VIEW_INITIAL_POSITION 200
+#define SPLIT_VIEW_FAVICON_POSITION 41
 
 @interface BrowserWindowController : NSWindowController
 

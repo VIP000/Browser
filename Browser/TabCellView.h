@@ -13,5 +13,6 @@
 @property (assign) IBOutlet NSTextField *title;
 @property (assign) IBOutlet NSTextField *url;
 @property (assign) IBOutlet NSImageView *favicon;
+@property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end

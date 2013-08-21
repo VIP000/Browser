@@ -114,10 +114,10 @@
 				55D9BEF117BBDDA700AD4701 /* BrowserWindowController.h */,
 				55D9BEF217BBDDA700AD4701 /* BrowserWindowController.m */,
 				55D9BEF317BBDDA700AD4701 /* BrowserWindowController.xib */,
-				554EAEE417BDA4BA00D99A28 /* BrowserTab.h */,
-				554EAEE517BDA4BA00D99A28 /* BrowserTab.m */,
 				554EAEE717BDA83900D99A28 /* TabCellView.h */,
 				554EAEE817BDA83900D99A28 /* TabCellView.m */,
+				554EAEE417BDA4BA00D99A28 /* BrowserTab.h */,
+				554EAEE517BDA4BA00D99A28 /* BrowserTab.m */,
 				55E61A9417BBFFBC0010687E /* Library */,
 			);
 			path = Browser;
