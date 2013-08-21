@@ -50,7 +50,9 @@
     // END XXX
     
     [self.urlBar becomeFirstResponder];
-    [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:NO];
+    
+    // Doesn't work!
+    [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:YES];
 }
 
 #pragma mark - IBAction
