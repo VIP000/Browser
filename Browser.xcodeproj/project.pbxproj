@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5511CC5E17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511CC5D17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m */; };
+		5511CC6017C56A8B00BE7BA8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5511CC5F17C56A8B00BE7BA8 /* Quartz.framework */; };
 		554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE517BDA4BA00D99A28 /* BrowserTab.m */; };
 		554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE817BDA83900D99A28 /* TabCellView.m */; };
 		55D9BEC317BBDCFF00AD4701 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5511CC5C17C56A2500BE7BA8 /* NSSplitView+DMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSplitView+DMAdditions.h"; sourceTree = "<group>"; };
+		5511CC5D17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSplitView+DMAdditions.m"; sourceTree = "<group>"; };
+		5511CC5F17C56A8B00BE7BA8 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		554EAEE417BDA4BA00D99A28 /* BrowserTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserTab.h; sourceTree = "<group>"; };
 		554EAEE517BDA4BA00D99A28 /* BrowserTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserTab.m; sourceTree = "<group>"; };
 		554EAEE717BDA83900D99A28 /* TabCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabCellView.h; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5511CC6017C56A8B00BE7BA8 /* Quartz.framework in Frameworks */,
 				55D9BEF717BBDFC100AD4701 /* WebKit.framework in Frameworks */,
 				55D9BEC317BBDCFF00AD4701 /* Cocoa.framework in Frameworks */,
 			);
@@ -80,6 +86,7 @@
 		55D9BEC117BBDCFF00AD4701 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5511CC5F17C56A8B00BE7BA8 /* Quartz.framework */,
 				55D9BEF617BBDFC100AD4701 /* WebKit.framework */,
 				55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */,
 				55D9BEC417BBDCFF00AD4701 /* Other Frameworks */,
@@ -131,6 +138,8 @@
 		55E61A9417BBFFBC0010687E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				5511CC5C17C56A2500BE7BA8 /* NSSplitView+DMAdditions.h */,
+				5511CC5D17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m */,
 				55E61A9117BBFF8C0010687E /* NSString+URLEncode.h */,
 				55E61A9217BBFF8C0010687E /* NSString+URLEncode.m */,
 			);
@@ -208,6 +217,7 @@
 				55E61A9317BBFF8C0010687E /* NSString+URLEncode.m in Sources */,
 				554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */,
 				554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */,
+				5511CC5E17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

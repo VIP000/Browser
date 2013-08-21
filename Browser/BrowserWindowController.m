@@ -9,7 +9,9 @@
 #import "BrowserWindowController.h"
 #import "BrowserTab.h"
 #import "TabCellView.h"
+
 #import "NSString+URLEncode.h"
+#import "NSSplitView+DMAdditions.h"
 
 @interface BrowserWindowController ()
 
@@ -47,6 +49,7 @@
     [self tableViewSelectionDidChange:nil];
     // END XXX
     
+    [self.splitView setPosition:INITIAL_SPLIT_VIEW_POSITION ofDividerAtIndex:0 animated:NO];
     [self.urlBar becomeFirstResponder];
 }
 
@@ -86,6 +89,14 @@
 - (IBAction)refreshButtonPressed:(id)sender
 {
     [self.currentWebView reload:nil];
+}
+
+- (IBAction)menuButtonPressed:(id)sender
+{
+    if ([self.splitView positionOfDividerAtIndex:0] > 0)
+        [self.splitView setPosition:0 ofDividerAtIndex:0 animated:YES];
+    else
+        [self.splitView setPosition:INITIAL_SPLIT_VIEW_POSITION ofDividerAtIndex:0 animated:YES];
 }
 
 #pragma mark - UI
