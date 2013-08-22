@@ -15,7 +15,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    if  (!browserWindow)
+    if (!browserWindow)
         browserWindow = [[BrowserWindowController alloc] init];
     [browserWindow showWindow:self];
 }
