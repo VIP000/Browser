@@ -1,7 +1,7 @@
 Browser
 =======
 
-A simple web browser for Mac OS X
+A browser... called browser.
 
 *still in beta*
 
