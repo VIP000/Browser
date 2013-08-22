@@ -12,8 +12,6 @@
 @interface BrowserTab : NSObject
 
 @property (strong, nonatomic) WebView *webView;
-
 + (id)newBrowserTabWithURL:(NSURL *)URL;
 - (id)initWithURL:(NSURL *)URL;
-
 @end

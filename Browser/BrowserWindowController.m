@@ -59,7 +59,8 @@
 - (IBAction)go:(id)sender
 {
     NSString *urlString = self.urlBar.stringValue;
-    if ([urlString isEqualToString:@""]) return;
+    if ([urlString isEqualToString:@""])
+        return;
     
     NSLog(@"go called with %@", urlString);
     
