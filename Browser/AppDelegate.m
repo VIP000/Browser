@@ -20,4 +20,9 @@
     [browserWindow showWindow:self];
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    return YES;
+}
+
 @end

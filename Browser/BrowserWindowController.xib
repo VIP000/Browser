@@ -108,7 +108,7 @@
 										</object>
 										<object class="NSScrollView" id="511235705">
 											<reference key="NSNextResponder" ref="566313355"/>
-											<int key="NSvFlags">286</int>
+											<int key="NSvFlags">278</int>
 											<array class="NSMutableArray" key="NSSubviews">
 												<object class="NSClipView" id="917117776">
 													<reference key="NSNextResponder" ref="511235705"/>
