@@ -45,6 +45,9 @@
 {
     [super windowDidLoad];
     
+    // Colors
+    self.tabView.backgroundColor = [NSColor colorWithCalibratedWhite:.2 alpha:1];
+    
     // XXX Gross
     [self tableViewSelectionDidChange:nil];
     // END XXX
@@ -89,16 +92,15 @@
     }
 }
 
-- (IBAction)addOrDeleteTabButtonPressed:(NSSegmentedControl *)sender
+- (IBAction)addTabButtonPressed:(id)sender
 {
-    switch (sender.selectedSegment) {
-        case SEGMENT_DELETE_TAB_BUTTON:
-            [tabs removeObjectAtIndex:selectedIndex];
-            break;
-        case SEGMENT_ADD_TAB_BUTTON:
-            [self addBrowserTab:@"http://duckduckgo.com"];
-            break;
-    }
+    [self addBrowserTab:@"http://duckduckgo.com"];
+    [self.tableView reloadData];
+}
+
+- (IBAction)deleteTabButtonPressed:(id)sender
+{
+    [tabs removeObjectAtIndex:selectedIndex];
     [self.tableView reloadData];
 }
 
@@ -145,7 +147,7 @@
     return index;
 }
 
-#pragma mark - WebView Delegates
+#pragma mark - WebView Delegate
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
     if (frame != sender.mainFrame)
@@ -209,7 +211,7 @@
     [self resetBackAndForwardButtonsForWebview:sender];
 }
 
-#pragma mark - Table View Data Source
+#pragma mark - Table View Data Source Delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
     return tabs.count;
@@ -228,6 +230,7 @@
     if (!result) {
         result = [[TabCellView alloc] init];
         result.identifier = cellIdentifier;
+        //result.highlightColor = TAB_HIGHLIGHTED_COLOR;
     }
     
     WebView *tabWebView = [tabs[row] webView];
@@ -249,7 +252,6 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     NSInteger index = self.tableView.selectedRow;
-    NSLog(@"index = %ld", index);
     
     if (index < 0 || selectedIndex == index)
         return;
@@ -257,8 +259,6 @@
     selectedIndex = index;
     
     WebView *tabWebView = [tabs[index] webView];
-    
-    NSLog(@"selectedIndex changed to %ld", selectedIndex);
     
     // load the webview into view
     tabWebView.frame = self.webViewContainer.bounds;

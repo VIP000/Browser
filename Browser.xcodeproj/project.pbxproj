@@ -11,6 +11,7 @@
 		5511CC6017C56A8B00BE7BA8 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5511CC5F17C56A8B00BE7BA8 /* Quartz.framework */; };
 		554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE517BDA4BA00D99A28 /* BrowserTab.m */; };
 		554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 554EAEE817BDA83900D99A28 /* TabCellView.m */; };
+		55A1248F17C80C5900B2A65C /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A1248E17C80C5900B2A65C /* BackgroundView.m */; };
 		55D9BEC317BBDCFF00AD4701 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */; };
 		55D9BECD17BBDCFF00AD4701 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55D9BECB17BBDCFF00AD4701 /* InfoPlist.strings */; };
 		55D9BECF17BBDCFF00AD4701 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D9BECE17BBDCFF00AD4701 /* main.m */; };
@@ -31,6 +32,8 @@
 		554EAEE517BDA4BA00D99A28 /* BrowserTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserTab.m; sourceTree = "<group>"; };
 		554EAEE717BDA83900D99A28 /* TabCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabCellView.h; sourceTree = "<group>"; };
 		554EAEE817BDA83900D99A28 /* TabCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabCellView.m; sourceTree = "<group>"; };
+		55A1248D17C80C5900B2A65C /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
+		55A1248E17C80C5900B2A65C /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		55D9BEBF17BBDCFF00AD4701 /* Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Browser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D9BEC217BBDCFF00AD4701 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		55D9BEC517BBDCFF00AD4701 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,8 @@
 				5511CC5D17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m */,
 				55E61A9117BBFF8C0010687E /* NSString+URLEncode.h */,
 				55E61A9217BBFF8C0010687E /* NSString+URLEncode.m */,
+				55A1248D17C80C5900B2A65C /* BackgroundView.h */,
+				55A1248E17C80C5900B2A65C /* BackgroundView.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				554EAEE617BDA4BA00D99A28 /* BrowserTab.m in Sources */,
 				554EAEE917BDA83900D99A28 /* TabCellView.m in Sources */,
 				5511CC5E17C56A2500BE7BA8 /* NSSplitView+DMAdditions.m in Sources */,
+				55A1248F17C80C5900B2A65C /* BackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
