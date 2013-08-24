@@ -9,6 +9,7 @@
 #import "BrowserWindowController.h"
 #import "BrowserTab.h"
 #import "TabCellView.h"
+#import "BackgroundView.h"
 
 #import "NSString+URLEncode.h"
 #import "NSSplitView+DMAdditions.h"
@@ -45,20 +46,21 @@
 {
     [super windowDidLoad];
     
-    // Notifications
+    // notifications
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleResize:) name:NSWindowDidResizeNotification object:self.window];
 
-    // Colors
-    self.tabView.backgroundColor = [NSColor colorWithCalibratedWhite:.2 alpha:1];
+    // colors
+    ((BackgroundView *)self.window.contentView).backgroundColor = [NSColor colorWithCalibratedWhite:.2 alpha:1];
     
     // XXX Gross
     [self tableViewSelectionDidChange:nil];
     // END XXX
     
-    [self.urlBar becomeFirstResponder];
-    
-    // Doesn't work!
+    // set the splitview initial position
     [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:YES];
+    
+    // focus the URL bar
+    [self.urlBar becomeFirstResponder];
 }
 
 #pragma mark - IBAction
@@ -115,7 +117,6 @@
 - (IBAction)menuButtonPressed:(id)sender
 {
     CGFloat position = [self.splitView positionOfDividerAtIndex:0];
-    NSLog(@"%lf", position);
     if (position > SPLIT_VIEW_INITIAL_POSITION)
         [self.splitView setPosition:SPLIT_VIEW_INITIAL_POSITION ofDividerAtIndex:0 animated:YES];
     else if (position > SPLIT_VIEW_FAVICON_POSITION)
