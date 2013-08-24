@@ -26,6 +26,7 @@ enum {
 @property (assign) IBOutlet NSSegmentedControl *backOrForwardButtonControl;
 @property (assign) IBOutlet NSTextField *urlBar;
 
+@property (assign) IBOutlet NSView *splitViewContainer;
 @property (assign) IBOutlet NSSplitView *splitView;
 @property (assign) IBOutlet NSView *webViewContainer;
 @property (assign) IBOutlet BackgroundView *tabView;

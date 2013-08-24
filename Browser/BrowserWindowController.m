@@ -45,6 +45,9 @@
 {
     [super windowDidLoad];
     
+    // Notifications
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleResize:) name:NSWindowDidResizeNotification object:self.window];
+
     // Colors
     self.tabView.backgroundColor = [NSColor colorWithCalibratedWhite:.2 alpha:1];
     
@@ -145,6 +148,14 @@
     tab.webView.identifier = [NSString stringWithFormat:@"%ld", index];
     [tabs addObject:tab];
     return index;
+}
+
+#pragma mark - NSWindow Notifications
+- (void)handleResize:(NSNotification *)notification {
+    // resize the splitview without moving the divider
+    CGFloat originalPosition = ((NSView *)self.splitView.subviews[0]).frame.size.width;
+    self.splitView.frame = ((NSView *)self.splitViewContainer).frame;
+    [self.splitView setPosition:originalPosition ofDividerAtIndex:0];
 }
 
 #pragma mark - WebView Delegate
